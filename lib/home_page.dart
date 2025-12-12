@@ -18,32 +18,26 @@ class HomePage extends StatelessWidget {
         backgroundColor: Colors.deepPurple,
         title: Text("Home Page"),
       ),
-      body: Padding(
-        padding: EdgeInsets.all(20), // whole page padding
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.end,
-          crossAxisAlignment: CrossAxisAlignment.end,
-          children: names
-              .map(
-                (e) => Container(
-                  margin: EdgeInsets.only(bottom: 12), // space between names
-                  padding: EdgeInsets.all(10), // inside padding of each text
-                  decoration: BoxDecoration(
-                    color: Colors.white24,
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                  child: Text(
-                    e,
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 18,
-                      fontWeight: FontWeight.w500,
-                    ),
-                  ),
-                ),
-              )
-              .toList(),
-        ),
+
+      body: ListView.builder(
+        itemCount: names.length,
+        itemBuilder: (context, index) {
+          return Container(
+            margin: EdgeInsets.all(12),
+            padding: EdgeInsets.all(15),
+            decoration: BoxDecoration(
+              color: Colors.white24,
+              borderRadius: BorderRadius.circular(10),
+            ),
+            child: Text(
+              names[index],
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 18,
+              ),
+            ),
+          );
+        },
       ),
     );
   }
